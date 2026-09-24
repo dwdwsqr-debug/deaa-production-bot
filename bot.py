@@ -43,7 +43,13 @@ def main():
     app.add_handler(CommandHandler("help", help_cmd))
     app.add_handler(MessageHandler(filters.PHOTO, photo))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text))
-    app.run_polling()
+    port = int(os.environ.get("PORT", "10000"))
+    webhook_url = os.environ["RENDER_EXTERNAL_URL"] + "/telegram"
+    app.run_webhook(
+    listen="0.0.0.0",
+    port=port,
+    url_path="telegram",
+    webhook_url=webhook_url,
 
-if __name__ == "__main__":
+    if __name__ == "__main__":
     main()
