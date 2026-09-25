@@ -1,1 +1,3 @@
 python-telegram-bot[webhooks]>=21,<23
+Pillow>=10,<13
+requests>=2.31,<3
